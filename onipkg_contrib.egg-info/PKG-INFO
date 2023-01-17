@@ -1,15 +1,11 @@
-Metadata-Version: 1.2
+Metadata-Version: 2.1
 Name: onipkg-contrib
-Version: 0.2
+Version: 0.3
 Summary: Contrib pkg para projetos da Onimusic
 Home-page: https://www.example.com/
 Author: Daniel e Isaque
 Author-email: daniel.santana@onimusic.com.br
 License: BSD-3-Clause
-Description: =====
-        Oni Contrib Pkg
-        =====
-Platform: UNKNOWN
 Classifier: Environment :: Web Environment
 Classifier: Framework :: Django
 Classifier: Framework :: Django :: 3.2
@@ -24,3 +20,8 @@ Classifier: Programming Language :: Python :: 3.9
 Classifier: Topic :: Internet :: WWW/HTTP
 Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
 Requires-Python: >=3.8
+License-File: LICENSE
+
+=====
+Oni Contrib Pkg
+=====

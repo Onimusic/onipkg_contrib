@@ -7,6 +7,7 @@ contrib/__init__.py
 contrib/api_helpers.py
 contrib/bulk_helper.py
 contrib/exceptions.py
+contrib/file_helpers.py
 contrib/form_widgets.py
 contrib/global_choices.py
 contrib/image_helpers.py
