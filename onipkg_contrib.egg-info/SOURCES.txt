@@ -15,6 +15,8 @@ contrib/number_helpers.py
 contrib/settings_context_processor.py
 contrib/string_helpers.py
 contrib/validators.py
+contrib/googlelogging/__init__.py
+contrib/googlelogging/google_logging_helper.py
 contrib/models/__init__.py
 contrib/models/base_model.py
 contrib/models/general_helpers.py
