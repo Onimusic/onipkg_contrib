@@ -6,7 +6,6 @@ Home-page: https://www.example.com/
 Author: Daniel e Isaque
 Author-email: daniel.santana@onimusic.com.br
 License: BSD-3-Clause
-Platform: UNKNOWN
 Classifier: Environment :: Web Environment
 Classifier: Framework :: Django
 Classifier: Framework :: Django :: 3.2
@@ -26,4 +25,3 @@ License-File: LICENSE
 =====
 Oni Contrib Pkg
 =====
-
