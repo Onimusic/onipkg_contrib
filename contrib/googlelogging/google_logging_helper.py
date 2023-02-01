@@ -24,7 +24,7 @@ class OniCloudHandler(CloudLoggingHandler):
             record (logging.LogRecord): The record to be logged.
         """
         import urllib
-        # super().emit(record)
+        super().emit(record)
         data = {
             'oni_token': self.oni_services_token,
             'bot_token': self.telegram_onitificator_bot_token,
