@@ -3,7 +3,7 @@ from django.templatetags.static import static
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
-from contrib.log_helper import log_error
+from onipkg_contrib.log_helper import log_error
 
 
 def default_get_youtube_embedded(youtube_video_id: str) -> str:
@@ -78,7 +78,7 @@ def get_unique_filename(filename: str) -> str:
     Returns:
         String para ser usada como nome do arquivo.
     """
-    from contrib.exceptions import InvalidFileNameError
+    from onipkg_contrib.exceptions import InvalidFileNameError
     from datetime import datetime
     spliced_old_name = filename.split('.')
     if len(spliced_old_name) <= 1:
