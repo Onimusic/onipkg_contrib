@@ -22,8 +22,9 @@ onipkg_contrib.egg-info/SOURCES.txt
 onipkg_contrib.egg-info/dependency_links.txt
 onipkg_contrib.egg-info/requires.txt
 onipkg_contrib.egg-info/top_level.txt
-onipkg_contrib/googlelogging/__init__.py
-onipkg_contrib/googlelogging/google_logging_helper.py
+onipkg_contrib/logging/__init__.py
+onipkg_contrib/logging/google_logging_helper.py
+onipkg_contrib/logging/helper.py
 onipkg_contrib/models/__init__.py
 onipkg_contrib/models/base_model.py
 onipkg_contrib/models/general_helpers.py
