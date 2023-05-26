@@ -13,6 +13,13 @@ class OniCloudHandler(CloudLoggingHandler):
         self.project_name = project_name
         super().__init__(*args, **kwargs)
 
+    @staticmethod
+    def notify_on_discord(text):
+        from discord import SyncWebhook
+        webhook = SyncWebhook.from_url(
+            'https://discordapp.com/api/webhooks/1101219902762778705/uFSi_pecwuJIbiKnS48ft-qmbZNHdjl3SLwPR7AqSQJojUetw6Nm8sygOTZOCR267Yxn')
+        webhook.send(text)
+
     def emit(self, record):
         """Actually log the specified logging record.
 
@@ -32,3 +39,5 @@ class OniCloudHandler(CloudLoggingHandler):
             'text': urllib.parse.quote(f'Um erro foi logado no {self.project_name}. \nErro: {record.msg}')
         }
         response = requests.post('https://onisass.onimusic.com.br/onitifications/notify-on-telegram', data=data)
+        response = notify_on_discord(f'Um erro foi logado no {self.project_name}. \nErro: {record.msg}')
+
