@@ -47,3 +47,12 @@ class RotatingAndTelegramHandler(RotatingFileHandler):
             'text': urllib.parse.quote(f'Um erro foi logado no {self.project_name}. \nErro: {record.getMessage()}')
         }
         requests.post('https://onisass.onimusic.com.br/onitifications/notify-on-telegram', data=data)
+        notify_on_discord(f'Um erro foi logado no {self.project_name}. \nErro: {record.msg}')
+
+
+    @staticmethod
+    def notify_on_discord(text):
+        from discord import SyncWebhook
+        webhook = SyncWebhook.from_url(
+            'https://discordapp.com/api/webhooks/1101219902762778705/uFSi_pecwuJIbiKnS48ft-qmbZNHdjl3SLwPR7AqSQJojUetw6Nm8sygOTZOCR267Yxn')
+        webhook.send(text)
