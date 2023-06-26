@@ -28,7 +28,10 @@ def validate_audio_format(file):
 
 
 def validate_file_max_size(file, max_size_kb: int):
-    file_size = file.file.size
+    try:
+        file_size = file.file.size
+    except AttributeError:
+        file_size = file.size
     limit_kb = max_size_kb
     if file_size > limit_kb * 1024:
         raise ValidationError(f"Tamanho máximo do arquivo é de {limit_kb} KB")
