@@ -6,12 +6,16 @@ import requests
 
 
 class OniCloudHandler(CloudLoggingHandler):
-    def __init__(self,oni_services_token,telegram_onitificator_bot_token,chat_ids,project_name, *args, **kwargs):
+    """
+        A handler that sends a telegram and discord message after logging into kibana.
+    """
+    def __init__(self, oni_services_token, telegram_onitificator_bot_token, chat_ids, project_name, *args, **kwargs):
         self.oni_services_token = oni_services_token
         self.telegram_onitificator_bot_token = telegram_onitificator_bot_token
         self.chat_ids = chat_ids
         self.project_name = project_name
         super().__init__(*args, **kwargs)
+
 
     @staticmethod
     def notify_on_discord(text):
@@ -40,4 +44,3 @@ class OniCloudHandler(CloudLoggingHandler):
         }
         response = requests.post('https://onisass.onimusic.com.br/onitifications/notify-on-telegram', data=data)
         response = notify_on_discord(f'Um erro foi logado no {self.project_name}. \nErro: {record.msg}')
-
