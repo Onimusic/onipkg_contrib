@@ -1,2 +1,0 @@
-class InvalidFileNameError(Exception):
-    pass

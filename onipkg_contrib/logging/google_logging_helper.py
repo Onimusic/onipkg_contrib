@@ -6,6 +6,9 @@ import requests
 
 
 class OniCloudHandler(CloudLoggingHandler):
+    """
+        A handler that sends a telegram and discord message after logging into kibana.
+    """
     def __init__(self, oni_services_token, telegram_onitificator_bot_token, chat_ids, project_name, *args, **kwargs):
         self.oni_services_token = oni_services_token
         self.telegram_onitificator_bot_token = telegram_onitificator_bot_token
