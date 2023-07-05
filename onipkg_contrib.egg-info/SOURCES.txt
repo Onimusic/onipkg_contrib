@@ -16,6 +16,7 @@ onipkg_contrib/log_helper.py
 onipkg_contrib/number_helpers.py
 onipkg_contrib/settings_context_processor.py
 onipkg_contrib/string_helpers.py
+onipkg_contrib/test.py
 onipkg_contrib/validators.py
 onipkg_contrib.egg-info/PKG-INFO
 onipkg_contrib.egg-info/SOURCES.txt
