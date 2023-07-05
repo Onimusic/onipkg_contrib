@@ -3,7 +3,7 @@ from google.cloud.logging_v2.handlers.handlers import CloudLoggingHandler, _form
     _GAE_RESOURCE_TYPE, _GAE_TRACE_ID_LABEL
 import urllib.parse
 import requests
-
+from helper import notify_on_discord
 
 class OniCloudHandler(CloudLoggingHandler):
     """
@@ -17,12 +17,12 @@ class OniCloudHandler(CloudLoggingHandler):
         super().__init__(*args, **kwargs)
 
 
-    @staticmethod
-    def notify_on_discord(text):
-        from discord import SyncWebhook
-        webhook = SyncWebhook.from_url(
-            'https://discordapp.com/api/webhooks/1101219902762778705/uFSi_pecwuJIbiKnS48ft-qmbZNHdjl3SLwPR7AqSQJojUetw6Nm8sygOTZOCR267Yxn')
-        webhook.send(text)
+    # @staticmethod
+    # def notify_on_discord(text):
+    #     from discord import SyncWebhook
+    #     webhook = SyncWebhook.from_url(
+    #         'https://discordapp.com/api/webhooks/1101219902762778705/uFSi_pecwuJIbiKnS48ft-qmbZNHdjl3SLwPR7AqSQJojUetw6Nm8sygOTZOCR267Yxn')
+    #     webhook.send(text)
 
     def emit(self, record):
         """Actually log the specified logging record.
