@@ -31,11 +31,11 @@ def font_types_list(for_choices=False) -> tuple:
          'details': {'url': '<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">',
                      'css': 'font-family: \'Raleway\', sans-serif'}})
 
-    if for_choices:
-        fonts_list = ((str(key), item['name']) for key, item in enumerate(fonts))
-    else:
-        fonts_list = fonts
-    return fonts_list
+    return (
+        ((str(key), item['name']) for key, item in enumerate(fonts))
+        if for_choices
+        else fonts
+    )
 
 
 def get_font_choices() -> tuple:
@@ -44,7 +44,7 @@ def get_font_choices() -> tuple:
     return font_types_list(True)
 
 
-def _get_font_details(font_id: int = int(0), item: str = 'url') -> str:
+def _get_font_details(font_id: int = 0, item: str = 'url') -> str:
     """Private method. Get font details. Defaults to Open Sans.
 
     Used to reuse code in this file.
