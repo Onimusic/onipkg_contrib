@@ -90,3 +90,14 @@ def email_context_builder(email_url, email_title, email_subject, email_descripti
         'email_logo': email_logo,
         'email_master_client_name': email_master_client_name,
     }
+
+def send_notify_message_discord(chat_id, text):
+    """Função para enviar a notificação no chat do discord
+
+    Args:
+        chat_id: URL webhook do chat que será enviada a notificação
+        text: Mensagem da notificação
+    """
+    from discord import SyncWebhook
+    webhook = SyncWebhook.from_url(chat_id)
+    webhook.send(text) 
