@@ -115,7 +115,7 @@ def default_query_assets_by_args(request, queried_class) -> dict:
     order_column = queried_class.get_column_order_choices()[order_column]  # pega qual a coluna eh pra ordenar
     if order == 'desc':
         # se for pra ordenar decrescente, coloca um - na frente (por causa do django orm)
-        order_column = '-' + order_column
+        order_column = f'-{order_column}'
     if search_value:  # se houver algo na caixa de busca faz o filtro
         queryset = queried_class.filter_objects(searched_value=search_value, request_user=request.user)
     else:
@@ -178,7 +178,7 @@ def get_default_datatables__query(request, queryset, search_fields, base_filters
     filters = base_filters
     if search_value:  # se houver algo na caixa de busca faz o filtro
         for search_field in search_fields:
-            filters[str(search_field) + '__icontains'] = search_value
+            filters[f'{str(search_field)}__icontains'] = search_value
     #     todo aplicar esse filtro do is staff, agora só testar na verdade
     if not request.user.is_staff:
         queryset = queryset.model.filter_objects_based_on_user(request_user_profile=request.user.user_user_profile,
@@ -197,4 +197,8 @@ def get_default_datatables__query(request, queryset, search_fields, base_filters
 
 def get_url_params(request):
     params = request.query_params
-    return f'?{"&".join([str(param) + "=" + str(params[param]) for param in params])}' if params else ''
+    return (
+        f'?{"&".join([f"{str(param)}={str(params[param])}" for param in params])}'
+        if params
+        else ''
+    )

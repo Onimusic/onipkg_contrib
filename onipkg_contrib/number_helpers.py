@@ -11,6 +11,6 @@ def round_or_0(value, digits=2):
 def round_or_1(value, digits=2):
     try:
         qtd = round(decimal.Decimal(value), digits)
-        return qtd if qtd >= 1 else 1
+        return max(qtd, 1)
     except Exception:
         return 1
