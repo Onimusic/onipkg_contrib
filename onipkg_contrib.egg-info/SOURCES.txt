@@ -30,3 +30,5 @@ onipkg_contrib/models/__init__.py
 onipkg_contrib/models/base_model.py
 onipkg_contrib/models/general_helpers.py
 onipkg_contrib/models/notification_helpers.py
+onipkg_contrib/template_tags/__init__.py
+onipkg_contrib/template_tags/settings_tags.py
