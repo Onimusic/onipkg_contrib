@@ -39,8 +39,14 @@ class BaseModel(models.Model):
         return queryset
 
     def delete(self, *args, **kwargs):
-        self.deleted = True
-        self.save()
+        """
+        Soft delete opcional. Para forçar o delete, passar o argumento force=True
+        """
+        if kwargs.get('force'):
+            super().delete(*args, **kwargs)
+        else:
+            self.deleted = True
+            self.save()
 
 
 class DSPSIdFieldsModel(BaseModel):
