@@ -43,7 +43,7 @@ class BaseModel(models.Model):
         Soft delete opcional. Para forçar o delete, passar o argumento force=True
         """
         if kwargs.get('force'):
-            super().delete(*args, **kwargs)
+            super().delete(using=kwargs.get('using'), keep_parents=kwargs.get('keep_parents'))
         else:
             self.deleted = True
             self.save()
