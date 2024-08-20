@@ -42,5 +42,11 @@ class OniCloudHandler(CloudLoggingHandler):
             'chat_id': self.chat_ids.get('dev'),
             'text': urllib.parse.quote(f'Um erro foi logado no {self.project_name}. \nErro: {record.msg}')
         }
-        response = requests.post('https://onisass.onimusic.com.br/onitifications/notify-on-telegram', data=data)
-        response = notify_on_discord(f'Um erro foi logado no {self.project_name}. \nErro: {record.msg}')
+        try:
+            requests.post('https://onisass.onimusic.com.br/onitifications/notify-on-telegram', data=data)
+        except Exception as e:
+            print(f'Error sending notification: {e}')
+        try:
+            notify_on_discord(f'Um erro foi logado no {self.project_name}. \nErro: {record.msg}')
+        except Exception as e:
+            print(f'Error sending notification: {e}')
