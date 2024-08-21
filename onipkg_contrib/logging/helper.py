@@ -52,6 +52,9 @@ class RotatingAndTelegramHandler(RotatingFileHandler):
             'text': urllib.parse.quote(f'Um erro foi logado no {self.project_name}. \nErro: {record.getMessage()}')
         }
         requests.post('https://onisass.onimusic.com.br/onitifications/notify-on-telegram', data=data)
-        notify_on_discord(f'Um erro foi logado no {self.project_name}. \nErro: {record.msg}')
-
+        try:
+            response = notify_on_discord(f'Um erro foi logado no {self.project_name}. \nErro: {record.getMessage()}')
+        except Exception as e:
+            print(f'Error sending notification: {e}')
+            pass
 
