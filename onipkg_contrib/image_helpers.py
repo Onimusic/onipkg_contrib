@@ -20,8 +20,7 @@ def make_thumbnail(image, size=(100, 100), filename=''):
 
 
 def make_thumbnail_and_set_for_model(obj, image_fied, thumb_field):
-    image = getattr(obj, image_fied, None)
-    if image:
+    if image := getattr(obj, image_fied, None):
         cover_filename = os.path.basename(getattr(image, 'name', ''))
         image_thumbnail = getattr(obj, thumb_field, None)
         try:
