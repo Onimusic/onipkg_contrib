@@ -45,15 +45,15 @@ class RotatingAndTelegramHandler(RotatingFileHandler):
         """
         import urllib
         super().emit(record)
-        data = {
-            'oni_token': self.oni_services_token,
-            'bot_token': self.telegram_onitificator_bot_token,
-            'chat_id': self.chat_ids.get('dev'),
-            'text': urllib.parse.quote(f'Um erro foi logado no {self.project_name}. \nErro: {record.getMessage()}')
-        }
-        requests.post('https://onisass.onimusic.com.br/onitifications/notify-on-telegram', data=data)
+        #data = {
+        #    'oni_token': self.oni_services_token,
+        #    'bot_token': self.telegram_onitificator_bot_token,
+        #    'chat_id': self.chat_ids.get('dev'),
+        #    'text': urllib.parse.quote(f'Um erro foi logado no {self.project_name}. \nErro: {record.getMessage()}')
+        #}
+        #requests.post('https://onisass.onimusic.com.br/onitifications/notify-on-telegram', data=data)
         try:
-            response = notify_on_discord(f'Um erro foi logado no {self.project_name}. \nErro: {record.getMessage()}')
+            notify_on_discord(f'Um erro foi logado no {self.project_name}. \nErro: {record.getMessage()}')
         except Exception as e:
             print(f'Error sending notification: {e}')
             pass
