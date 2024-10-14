@@ -9,14 +9,14 @@ from django.utils.translation import gettext_lazy as _
 from ..validators import validate_file_max_5000
 
 
-class BaseModelManager(models.Manager):
+class SoftDeleteBaseModelManager(models.Manager):
     """Manager do BaseModel.
     """
     def get_queryset(self):
         return super().get_queryset().filter(deleted=False)
 
 
-class BaseModel(models.Model):
+class SoftDeleteBaseModel(models.Model):
     """Base model with mandatory fields
 
     Attrs:
@@ -29,7 +29,7 @@ class BaseModel(models.Model):
     deleted = models.BooleanField(default=False, verbose_name=_('Deletado'), help_text=_('Se for marcado, este objeto será apagado do banco de dados'))
 
     # sobrescrita do manager padrão
-    objects = BaseModelManager()
+    objects = SoftDeleteBaseModelManager()
 
     class Meta:
         abstract = True
@@ -47,6 +47,24 @@ class BaseModel(models.Model):
         else:
             self.deleted = True
             self.save()
+            
+
+class BaseModel(models.Model):
+    """Model Base without soft delete.
+
+    Attrs:
+        created_at (datetime): Date and time of model's creation.
+        updated_at (datetime): Date and time of model's last update.
+    """
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Created At'))
+    updated_at = models.DateTimeField(auto_now=True, verbose_name=_('Updated At'))
+
+    class Meta:
+        abstract = True
+
+    @staticmethod
+    def filter_objects_based_on_user(request_user_profile, queryset: QuerySet):
+        return queryset
 
 
 class DSPSIdFieldsModel(BaseModel):
