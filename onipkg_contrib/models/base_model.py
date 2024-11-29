@@ -101,12 +101,12 @@ class BaseContact(BaseModel):
 
     def __str__(self):
         """str method"""
-        return str(self.name) + " - " + str(self.person_name)
+        return f"{str(self.name)} - {str(self.person_name)}"
 
 
 def get_file_path(instance, filename, folder='uploads'):
     """Define o file_path do arquivo usando um nome aleatorio para o filename, impedindo conflitos de nome igual"""
-    filename = "%s%s" % (uuid.uuid4(), filename)
+    filename = f"{uuid.uuid4()}{filename}"
     return os.path.join(folder, filename)
 
 
