@@ -51,7 +51,11 @@ class RotatingAndTelegramHandler(RotatingFileHandler):
             'chat_id': self.chat_ids.get('dev'),
             'text': urllib.parse.quote(f'Um erro foi logado no {self.project_name}. \nErro: {record.getMessage()}')
         }
-        requests.post('https://onisass.onimusic.com.br/onitifications/notify-on-telegram', data=data)
+        try:
+            requests.post('https://onisass.onimusic.com.br/onitifications/notify-on-telegram', data=data)
+        except Exception as e:
+            record.msg = record.msg + str(e)
         notify_on_discord(f'Um erro foi logado no {self.project_name}. \nErro: {record.msg}')
+        
 
 
