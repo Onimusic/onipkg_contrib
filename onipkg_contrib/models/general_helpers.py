@@ -64,7 +64,6 @@ def generic_slug_generator(model, text, field_name='slug'):
             filter_query[field_name] = temp_slug
     except AttributeError as e:  # Se o nome do campo do slug não for "slug", simplesmente retornamos a string
         log_error(e)
-        pass
     return unidecode(temp_slug)
 
 
